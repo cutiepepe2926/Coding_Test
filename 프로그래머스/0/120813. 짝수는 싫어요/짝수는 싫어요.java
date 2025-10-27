@@ -2,17 +2,15 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int n) {
-        LinkedList<Integer> LL = new LinkedList<>();
-        
-        for (int i=1; i<=n; i++) {
+        ArrayList<Integer> AL = new ArrayList<>();
+        for (int i=0; i<=n; i++) {
             if (i%2!=0) {
-                LL.add(i);
+                AL.add(i);
             }
         }
-        int[] answer = new int[LL.size()];
-        for (int i=0; i<LL.size(); i++) {
-            answer[i] = LL.get(i);
-        }
+        
+        int[] answer = AL.stream().mapToInt(Integer::intValue).toArray();
+        
         return answer;
     }
 }
