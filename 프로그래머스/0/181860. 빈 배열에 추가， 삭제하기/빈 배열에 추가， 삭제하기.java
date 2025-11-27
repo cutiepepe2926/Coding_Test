@@ -21,7 +21,15 @@ class Solution {
             i++;
         }
         
-        int[] answer = ll.stream().mapToInt(x->x).toArray();
+        //int[] answer = ll.stream().mapToInt(x->x).toArray();
+        int[] answer = new int[ll.size()];
+        
+        int idx = 0;
+        
+        for (int num : ll) {
+            answer[idx++] = num;
+        }
+        
         return answer;
     }
 }
