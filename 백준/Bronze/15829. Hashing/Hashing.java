@@ -6,9 +6,10 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         String unhash = br.readLine();
         long answer = 0;
-        
+        long r = 1;
         for (int i = 0; i < n; i++) {
-            answer += ( unhash.charAt(i) - 'a' + 1 ) * (long)Math.pow(31, i);
+            answer = (answer + (unhash.charAt(i) - 'a' + 1) * r) % 1234567891;
+            r = (r * 31) % 1234567891;
         }
         System.out.println(answer);
     }
