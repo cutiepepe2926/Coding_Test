@@ -27,20 +27,18 @@ public class Main {
         ArrayList<Integer> al = new ArrayList<>();
         int max = 0;
         for (int v : map.values()) max = Math.max(max, v);
+        Integer prev = null;
         for (int i = 0; i < list.length; i++) {
-            if (map.get(list[i]) == max) {
-                if (al.indexOf(list[i]) == -1) {
-                    al.add(list[i]);
+            int x = list[i];
+            if (map.get(x) == max) {
+                if (prev == null || prev != x) {   // 중복 제거 O(1)
+                    al.add(x);
+                    prev = x;
                 }
             }
         }
-        int many = 0; //최빈값
-        if (al.size()>=2) {
-            many = al.get(1);
-        }
-        else {
-            many = al.get(0);
-        }
+
+        int many = (al.size() >= 2) ? al.get(1) : al.get(0);
 
         range = list[list.length-1] - list[0]; // 범위
 
