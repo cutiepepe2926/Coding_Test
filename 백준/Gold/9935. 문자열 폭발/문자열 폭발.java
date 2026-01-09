@@ -39,10 +39,16 @@ public class Main {
             }
         }
 
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.append(stack.pollFirst());
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        if (stack.isEmpty()) {
+            System.out.println("FRULA");
         }
-        System.out.println((sb.toString().isEmpty())?"FRULA":sb);
+        else {
+            while (!stack.isEmpty()) {
+                bw.write(stack.pollFirst());
+            }
+            bw.flush();   
+        }
+        bw.close();
     }
 }
