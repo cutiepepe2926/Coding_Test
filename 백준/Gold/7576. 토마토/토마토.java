@@ -6,7 +6,6 @@ public class Main {
     static int m;
     static int n;
     static int[][] farm;
-    static boolean[][] visited;
     static int[][] dist;
     static int[] dx = new int[]{-1, 1, 0, 0};
     static int[] dy = new int[]{0, 0, 1, -1};
@@ -14,7 +13,6 @@ public class Main {
     static void bfs(ArrayList<int[]> s) {
         ArrayDeque<int[]> q = new ArrayDeque<>();
         for (int[] curS : s) {
-            visited[curS[0]][curS[1]] = true;
             q.add(curS);
         }
         
@@ -27,13 +25,9 @@ public class Main {
                 int ny = y + dy[dir];
                 
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
-                if (farm[nx][ny] == -1) continue;
-                if (visited[nx][ny]) continue;
-                visited[nx][ny] = true;
+                if (farm[nx][ny] == -1 || farm[nx][ny] == 1) continue;
                 farm[nx][ny] = 1;
-                
                 dist[nx][ny] = dist[x][y] + 1;
-                
                 q.add(new int[]{nx,ny});
             }
         }
@@ -45,7 +39,6 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
         n = Integer.parseInt(st.nextToken());
         farm = new int[n][m];
-        visited = new boolean[n][m];
         dist = new int[n][m];
         
         
