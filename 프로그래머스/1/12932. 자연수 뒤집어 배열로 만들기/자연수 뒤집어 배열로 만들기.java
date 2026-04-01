@@ -1,13 +1,16 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(long n) {
-        String[] list = String.valueOf(n).split("");
         
-        int[] answer = new int[list.length];
+        String s = String.valueOf(n);
         
-        int j = 0;
+        int[] answer = new int[s.length()];
         
-        for (int i = list.length-1; i>=0; i--) {
-            answer[i] = Integer.parseInt(list[j++]);
+        int idx  = 0;
+        
+        for (int i = s.length() - 1; i >= 0; i--) {
+            answer[idx++] = s.charAt(i) - '0';
         }
         
         return answer;
