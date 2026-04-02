@@ -3,30 +3,38 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] arr, int divisor) {
         
-        LinkedList<Integer> ll = new LinkedList<>();
-        
-        for (int a : arr) {
-            if (a%divisor==0) {
-                ll.add(a);
-            }
-        }
-        
         int[] answer;
         
-        if (ll.size()==0) {
-            answer = new int[1];
-            answer[0] = -1;
+        List<Integer> temp = new ArrayList<>();
+        
+        for (int a : arr) {
+            
+            if (a % divisor == 0) {
+                temp.add(a);
+            }
+            
+        }
+        
+        if (temp.size() == 0) {
+            
+            answer = new int[]{-1};
+        
         }
         else {
-            answer = new int[ll.size()];
-            int i = 0;
-            for (int l : ll) {
-                answer[i++] = l;
+            
+            Collections.sort(temp);
+        
+            answer = new int[temp.size()];
+            
+            int idx = 0;
+            
+            for (int t : temp) {
+                answer[idx++] = t;
             }
+            
         }
         
-        Arrays.sort(answer);
-        
         return answer;
+        
     }
 }
