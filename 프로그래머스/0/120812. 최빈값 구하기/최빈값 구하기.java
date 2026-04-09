@@ -2,25 +2,40 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] array) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
+    
+        // 최빈값이면 Map이 편리
+        HashMap<Integer, Integer> cntNum = new HashMap<>();
         
-        for (int i : array) {
-            hm.put(i,hm.getOrDefault(i,0)+1);
+        // 각 key 값 별로 +1씩 처리
+        for (int a : array) {
+            cntNum.put(a, cntNum.getOrDefault(a, 0) + 1);
         }
         
-        int max = 0;
-        int mode = -1;
+        // 최빈값 여러 개 체크용 변수
+        int key = -1; // 최빈값
+        int beando = -1; // 빈도 수 
+        boolean dup = false; // 여러 개 체크용
         
-        for (int key : hm.keySet()) {
-            int value = hm.get(key);
-            if (value > max) {
-                max = value;
-                mode = key;
+        // cntNum 순회 체크
+        for (Map.Entry<Integer, Integer> entry : cntNum.entrySet()) {
+            if (entry.getValue() > beando) {
+                key = entry.getKey();
+                beando = entry.getValue();
+                dup = false;
             }
-            else if (value==max) {
-                mode = -1;
+            else if (entry.getValue() == beando) {
+                dup = true;
+            }
+            else {
+                continue;
             }
         }
-        return mode;
+        
+        if (dup) {
+            return -1;
+        }
+        
+        return key;
+        
     }
 }
