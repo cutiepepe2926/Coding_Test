@@ -11,10 +11,10 @@ class Solution {
         
         Collections.sort(al);
         
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sr = new StringBuilder();
         
-        sb.append(al.get(0)).append(" ").append(al.get(al.size()-1));
+        sr.append(al.get(0)).append(" ").append(al.get(al.size()-1));
         
-        return sb.toString();
+        return sr.toString();
     }
 }
