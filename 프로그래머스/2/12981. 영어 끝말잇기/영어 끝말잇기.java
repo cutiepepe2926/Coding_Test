@@ -3,56 +3,50 @@ import java.util.*;
 class Solution {
     public int[] solution(int n, String[] words) {
         
-        // 몇번 나왔는 지 체크용
-        HashMap<String, Integer> howMany = new HashMap<>();
+        // 결과 값
+        int[] answer = new int[2];
         
-        for (String s : words) {
-            howMany.put(s,0);
-        }
-
-        // 각 인원 별 차례 저장용 - 0부터 시작, 나올때마다 + 1
-        int[] people = new int[n];
+        // 통과 시
+        boolean pass = true;
         
-        // 멈춘 지점
-        int stop = 0;
-        int wl = words.length;
-        // 통과 여부
-        boolean ok = true;
+        // n번 사람 변수 및 차례 값
+        int num = 0;
+        int turn = 0;
+        int t = 0;
         
-        for (int i = 0; i < wl; i++) {
+        // 중복체크용
+        HashSet<String> check = new HashSet<>();
+        
+        for (int i = 0; i < words.length; i++) {
             
-            if (i > 0) {
-                // 끝 단어와 시작 단어가 다른 경우
-                if (words[i].charAt(0) != words[i-1].charAt(words[i-1].length()-1)) {
-                    ok = false;
-                    stop = i;
+            if (i > 0) { // 앞 뒤 단어 간 연결 체크
+                if (words[i-1].charAt(words[i-1].length() - 1) != words[i].charAt(0)) {
+                    pass = false;
+                    turn = i;
                     break;
-                } 
+                }
             }
             
-            // 몇 번 나왔는가?
-            int cnt = howMany.get(words[i]);
-            
-            // 2번 이상이니 끝
-            if (cnt > 0) {
-                ok = false;
-                stop = i;
+            if (check.contains(words[i])) { // 단어 포함 시
+                pass = false;
+                turn  = i;
                 break;
             }
-            
-            // 해당 단어 출현 수 + 1
-            howMany.put(words[i], cnt+1);
-            
-            // 인원 별 차례 + 1
-            people[i%n]++;
+            else { // 단어 미 포함 시
+                check.add(words[i]);
+            }
+        
         }
         
-        // 사람, 차례
-        int[] answer;
+        // 탈락자 없는 경우
+        if (pass) {
+            return answer;
+        }
+        else { // 탈락자 발생
+            answer[0] = turn % n + 1;
+            answer[1] = turn / n + 1;
+            return answer;
+        }
         
-        if (ok) answer = new int[]{0,0};
-        else answer =  new int[]{(stop)%n + 1, people[(stop)%n] + 1};
-
-        return answer;
     }
 }
