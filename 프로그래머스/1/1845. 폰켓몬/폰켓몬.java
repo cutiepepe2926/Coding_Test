@@ -3,14 +3,15 @@ import java.util.*;
 class Solution {
     public int solution(int[] nums) {
         
-        HashSet<Integer> hs = new HashSet<>();
+        HashSet<Integer> rmDup = new HashSet<>();
         
-        for (int v : nums) {
-            hs.add(v);
+        for (int n : nums) {
+            rmDup.add(n);
         }
         
-        int answer = Math.min(hs.size(), nums.length/2);
+        int n2 = nums.length / 2;
         
-        return answer;
+        return (n2 >= rmDup.size())?(n2 * rmDup.size() / n2):(n2);
+        
     }
 }
