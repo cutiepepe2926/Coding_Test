@@ -2,7 +2,9 @@ import java.util.*;
 
 class Solution {
     public String solution(String s) {
+        
         StringTokenizer st = new StringTokenizer(s);
+        
         ArrayList<Integer> al = new ArrayList<>();
         
         while (st.hasMoreTokens()) {
