@@ -3,58 +3,34 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] numlist, int n) {
         
-        //1번 - 숫자 정렬
-        Arrays.sort(numlist);
+        int[] answer = new int[numlist.length];
         
-        int[] abs_list = numlist.clone();
+        Integer[] temp = new Integer[numlist.length];
         
-        int lowest = 20000;
-        int mid = 0;
-        //2번 - n과의 절대값 차이 저장 후 가장 적은 값 찾기
-        for (int i=0; i<abs_list.length; i++) {
-            abs_list[i] = Math.abs(abs_list[i]-n);
-            if (lowest > abs_list[i]) {
-                lowest = abs_list[i];
-                mid = i;
-            }
-            if (lowest == abs_list[i]) {
-                mid = i;
-            }
+        int idx = 0;
+        
+        for (Integer t : numlist) {
+            temp[idx++] = t;
         }
         
-        //3번 - 2개의 포인터로 조절해가면서 넣기
-        int[] answer = new int[numlist.length];
-        answer[0] = numlist[mid];
+        Arrays.sort(temp, (a,b) -> {
+            
+            int absA = Math.abs(n-a);
+            int absB = Math.abs(n-b);
+            
+            if (absA != absB) {
+                return Integer.compare(absA, absB);
+            }
+            return Integer.compare(b, a);
+        });
         
-        int left = mid-1;
-        int right = mid+1;
-        for (int i=1; i<answer.length; i++) {
-            if (left<0) { 
-                answer[i] = numlist[right]; 
-                right++; 
-                continue;
-            }
-            if (right>answer.length-1) {
-                answer[i] = numlist[left]; 
-                left--; 
-                continue;
-            }
-            if (abs_list[left] > abs_list[right]) {
-                answer[i] = numlist[right];
-                right++;
-            }
-            else if (abs_list[left] < abs_list[right]) {
-                answer[i] = numlist[left];
-                left--;
-            }
-            else {
-                answer[i] = numlist[right];
-                right++;
-            }
+        idx = 0;
+        
+        for (int t : temp) {
+            answer[idx++] = t;
         }
         
         return answer;
+        
     }
-    
-    
 }
