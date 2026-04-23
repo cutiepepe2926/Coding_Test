@@ -3,24 +3,26 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] numbers) {
         
-        Set<Integer> s = new HashSet<>();
+        HashSet<Integer> temp = new HashSet<>();
         
-        for (int i = 0; i < numbers.length-1; i++) {
-            for (int j = i+1; j < numbers.length; j++) {
-                s.add(numbers[i] + numbers[j]);
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
+                if (i == j) continue;
+                temp.add(numbers[i] + numbers[j]);
             }
         }
         
-        int[] answer = new int[s.size()];
+        int[] answer = new int[temp.size()];
         
-        Iterator<Integer> it = s.iterator();
+        int idx = 0;
         
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = it.next();
+        for (int r : temp) {
+            answer[idx++] = r;
         }
         
         Arrays.sort(answer);
         
         return answer;
+        
     }
 }
