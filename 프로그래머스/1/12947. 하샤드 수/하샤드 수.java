@@ -3,12 +3,13 @@ class Solution {
         
         String sx = String.valueOf(x);
         
-        int hashad = 0;
+        int div = 0;
         
         for (int i = 0; i < sx.length(); i++) {
-            hashad += sx.charAt(i) - '0';
+            div = div + (sx.charAt(i) - '0');
         }
         
-        return (x%hashad==0)?true:false;
+        return (x % div == 0) ? true : false;
+        
     }
 }
