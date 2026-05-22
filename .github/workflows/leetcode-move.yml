@@ -36,7 +36,15 @@ jobs:
           for d in [0-9][0-9][0-9][0-9]-*; do
             if [ -d "$d" ]; then
               echo "Moving directory: $d"
-              mv "$d" "LeetCode/"
+
+              if [ -e "LeetCode/$d" ]; then
+                echo "LeetCode/$d already exists. Merging contents."
+                cp -r "$d"/. "LeetCode/$d"/
+                rm -rf "$d"
+              else
+                mv "$d" "LeetCode/"
+              fi
+
               found=1
             fi
           done
