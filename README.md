@@ -26,9 +26,15 @@
 ## String
 |  |
 | ------- |
+| [0022-generate-parentheses](https://github.com/cutiepepe2926/Coding_Test/tree/master/0022-generate-parentheses) |
 | [0125-valid-palindrome](https://github.com/cutiepepe2926/Coding_Test/tree/master/0125-valid-palindrome) |
 ## Backtracking
 |  |
 | ------- |
+| [0022-generate-parentheses](https://github.com/cutiepepe2926/Coding_Test/tree/master/0022-generate-parentheses) |
 | [0046-permutations](https://github.com/cutiepepe2926/Coding_Test/tree/master/0046-permutations) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0022-generate-parentheses](https://github.com/cutiepepe2926/Coding_Test/tree/master/0022-generate-parentheses) |
 <!---LeetCode Topics End-->
