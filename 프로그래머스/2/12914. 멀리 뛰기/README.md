@@ -1,10 +1,10 @@
 # [level 2] 멀리 뛰기 - 12914 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12914) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12914?utm_source=chatgpt.com) 
 
 ### 성능 요약
 
-메모리: 83.8 MB, 시간: 0.10 ms
+메모리: 77.6 MB, 시간: 0.08 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 02월 13일 22:03:31
+2026년 06월 29일 21:49:16
 
 ### 문제 설명
 
